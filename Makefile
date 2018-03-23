@@ -17,15 +17,15 @@
 # Build tunables
 
 # When updating these defaults, be sure to check that ALL_BUILDABLE_FLAVORS is updated
-# CEPH_VERSION,ARCH,OS_NAME,OS_VERSION,BASEOS_REG,BASEOS_REPO,BASEOS_TAG
+# CEPH_VERSION,CEPH_POINT_RELEASE,ARCH,OS_NAME,OS_VERSION,BASEOS_REG,BASEOS_REPO,BASEOS_TAG
 FLAVORS ?= \
-	luminous,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	jewel,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	jewel,x86_64,ubuntu,14.04,_,ubuntu,14.04 \
-	kraken,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	luminous,x86_64,centos,7,_,centos,7 \
-	jewel,x86_64,centos,7,_,centos,7 \
-	kraken,x86_64,centos,7,_,centos,7 \
+	luminous,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	jewel,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	jewel,,x86_64,ubuntu,14.04,_,ubuntu,14.04 \
+	kraken,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	luminous,,x86_64,centos,7,_,centos,7 \
+	jewel,,x86_64,centos,7,_,centos,7 \
+	kraken,,x86_64,centos,7,_,centos,7 \
 
 REGISTRY ?= ceph
 
@@ -39,23 +39,24 @@ RELEASE ?= $(shell git rev-parse --abbrev-ref HEAD)
 include maint-lib/makelib.mk
 
 # All flavor options that can be passed to FLAVORS
-# CEPH_VERSION,ARCH,OS_NAME,OS_VERSION,BASEOS_REG,BASEOS_REPO,BASEOS_TAG
+# CEPH_VERSION,CEPH_POINT_RELEASE,ARCH,OS_NAME,OS_VERSION,BASEOS_REG,BASEOS_REPO,BASEOS_TAG
 ALL_BUILDABLE_FLAVORS := \
-	luminous,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	jewel,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	jewel,x86_64,ubuntu,14.04,_,ubuntu,14.04 \
-	kraken,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
-	luminous,x86_64,centos,7,_,centos,7 \
-	jewel,x86_64,centos,7,_,centos,7 \
-	kraken,x86_64,centos,7,_,centos,7 \
-	luminous,x86_64,opensuse,42.3,_,opensuse,42.3 \
+	luminous,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	jewel,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	jewel,,x86_64,ubuntu,14.04,_,ubuntu,14.04 \
+	kraken,,x86_64,ubuntu,16.04,_,ubuntu,16.04 \
+	luminous,,x86_64,centos,7,_,centos,7 \
+	jewel,,x86_64,centos,7,_,centos,7 \
+	kraken,,x86_64,centos,7,_,centos,7 \
+	luminous,,x86_64,opensuse,42.3,_,opensuse,42.3 \
 
 # ==============================================================================
 # Build targets
 .PHONY: all stage build build.parallel build.all push
 
 stage.%:
-	@$(call set_env_var,CEPH_VERSION,$*) $(call set_env_var,ARCH,$*) \
+	@$(call set_env_var,CEPH_VERSION,$*) $(call set_env_var,CEPH_POINT_RELEASE,$*) \
+	$(call set_env_var,ARCH,$*) \
 	$(call set_env_var,OS_NAME,$*) $(call set_env_var,OS_VERSION,$*) \
 	$(call set_env_var,BASEOS_REG,$*) $(call set_env_var,BASEOS_REPO,$*) \
 	$(call set_env_var,BASEOS_TAG,$*) $(call set_env_var,IMAGES_TO_BUILD,$*) \

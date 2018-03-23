@@ -15,6 +15,7 @@ ALIGNED_NEWLINE = '\n' + ' '*21  # align second line to column
 # Allow lines to extend beyond 99 char limit by 6 chars to support output formatting to 100 cols
 REQUIRED_ENV_VARS = OrderedDict([
     ('CEPH_VERSION',      'Ceph named version being built (e.g., luminous, mimic)'),
+    ('CEPH_POINT_RELEASE', 'Ceph point release version (e.g., -12.2.0)'),
     ('ARCH',              'Architecture of binaries being built (e.g., amd64, arm32, arm64)'),
     ('OS_NAME',           'OS name as used by the ceph-container project (e.g., ubuntu, opensuse)'),  # noqa: E501
     ('OS_VERSION',        'OS version as used by ceph-container project (e.g., 16.04, 42.3 respectively)'),  # noqa: E501

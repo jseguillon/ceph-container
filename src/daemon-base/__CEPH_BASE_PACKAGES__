@@ -1,11 +1,11 @@
 \
         ca-certificates \
-        ceph-common \
-        ceph-mon \
-        ceph-osd \
-        ceph-mds \
-        __CEPH_MGR_PACKAGE__ \
+        ceph-commonSTAGE_REPLACE_WITH_CEPH_POINT_RELEASE \
+        ceph-monSTAGE_REPLACE_WITH_CEPH_POINT_RELEASE \
+        ceph-osdSTAGE_REPLACE_WITH_CEPH_POINT_RELEASE\
+        ceph-mdsSTAGE_REPLACE_WITH_CEPH_POINT_RELEASE\
+        __CEPH_MGR_PACKAGE__\
         kmod \
-        __RADOSGW_PACKAGE__ \
-        rbd-mirror \
+        __RADOSGW_PACKAGE__\
+        rbd-mirrorSTAGE_REPLACE_WITH_CEPH_POINT_RELEASE \
         __GANESHA_PACKAGES__
